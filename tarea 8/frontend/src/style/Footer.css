@@ -1,0 +1,14 @@
+footer{
+    background-color: #312f2f;
+}
+ footer ul{
+    list-style: none;
+ }
+ footer ul li a{
+    color:white;
+    text-decoration: none;
+ }
+ footer ul li a:hover{
+    color:rgb(109, 22, 22);
+    text-decoration: none;
+ }

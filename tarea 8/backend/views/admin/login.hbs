@@ -1,0 +1,7 @@
+<form action="/admin/login" method="post"><input type="text" id="inputUser" placeholder="Usuario" name="usuario">
+<input type="password" id="inputPassword" placeholder="password" name="password">
+<button type="submit">Ingresar</button>
+</form>
+{{#if error}}
+    <p>Usuario o clave incorrecto</p>
+{{/if}}

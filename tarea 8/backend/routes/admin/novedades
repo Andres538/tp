@@ -1,0 +1,63 @@
+var express=require('express');
+var router=express.Router();
+var usuariosModel= require('./../../models/usuariosModel');
+
+router.get('/',async function(req,res,next){
+    var data= await usuariosModel.getUsers();
+    res.render('admin/novedades',
+    {
+        layout:'admin/layout',
+        data
+    });
+});
+router.get('/agregar',(req,res,next)=>{res.render('admin/agregar',{layout:'admin/layout'});});
+router.post('/agregar',async (req,res,next)=>{
+    try{
+        if(req.body.nombre_cl!="" && req.body.mail!="" && req.body.contraseña!="" && req.body.telefono!="" && req.body.direccion!="" && req.body.numero_de_tarjeta!=""){
+            await usuariosModel.insertUsuario(req.body);
+            res.redirect('/admin/novedades')
+        }else{
+            res.render('admin/agregar',{
+                layout:'admin/layout',
+                error:true, message:'Todos los campos son requeridos'
+            })
+        }
+    }catch(error){
+        console.log(error)
+        res.render('admin/agregar',{layout:'admin/layout',error:true,message:'No se cargo el cliente'})
+    }
+});
+router.get('/eliminar/:id',async (req,res,next)=>{
+          var id=req.params.id;  
+    await usuariosModel.deleteUsuario(id);
+            res.redirect('/admin/novedades')
+      
+});
+router.get('/modificar/:id',async (req,res,next)=>{  
+    let usuario=await usuariosModel.getUserbyid(req.params.id);
+    console.log(usuario);
+      res.render('admin/modificar',{
+        layout:'admin/layout',
+        usuario
+      });
+
+});
+router.post('/modificar',async (req,res,next)=>{
+    try{
+            var obj={
+                nombre_cl:req.body.nombre_cl,
+                mail:req.body.mail,
+                contraseña:req.body.contraseña,
+                telefono:req.body.telefono,
+                direccion:req.body.direccion,
+                numero_de_tarjeta:req.body.numero_de_tarjeta,
+            };                                             ;
+            await usuariosModel.UpdateUsuario(obj,req.body.id_cl);
+            res.redirect('/admin/novedades')
+        
+    }catch(error){
+        console.log(error)
+        res.render('admin/modificar',{layout:'admin/layout',error:true,message:'No se cargo el cambio'})
+    }
+});
+module.exports=router;

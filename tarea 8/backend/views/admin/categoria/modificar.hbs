@@ -1,0 +1,17 @@
+<div class="container" style="margin: 100px auto">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h4>Modificar Categoria</h4>
+            <form action="/admin/categoria/modificar/" method="post">
+                <input type="hidden" value="{{categoria.id_c}}" name="id_c">
+                <div class="mb-3 row">
+                    <input type="text" class="form-control" value="{{categoria.nombre_c}}" name="nombre_c">
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{{#if error}}
+<h5>{{message}}</h5>
+{{/if}}

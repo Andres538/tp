@@ -1,0 +1,30 @@
+<div class="container" style="margin: 100px auto">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h4>Modificar cliente</h4>
+            <form action="/admin/novedades/modificar/" method="post">
+                <input type="hidden" value="{{usuario.id_cl}}" name="id_cl">
+                <div class="mb-3 row">
+                    <input type="text" class="form-control" value="{{usuario.nombre_cl}}" name="nombre_cl">
+                </div>
+                <div class="mb-3 row">
+                    <input type="text" class="form-control" value="{{usuario.mail}}" name="mail">
+                </div>
+                <div class="mb-3 row"><input  type="text" class="form-control" value="{{usuario.contraseña}}" name="contraseña"></div>
+                <div class="mb-3 row">
+                    <input type="number"  class="form-control"  value="{{usuario.telefono}}"  name="telefono">
+                </div>
+                <div class="mb-3 row">
+                    <input type="text" class="form-control"  value="{{usuario.direccion}}" name="direccion">
+                </div>
+                <div class="mb-3 row">
+                    <input type="number" class="form-control" value="{{usuario.numero_de_tarjeta}}" name="numero_de_tarjeta">
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{{#if error}}
+<h5>{{message}}</h5>
+{{/if}}
