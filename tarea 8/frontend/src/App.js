@@ -18,6 +18,7 @@ import Registro from './pages/Registro';
 import AgregarUsuarios from './pages/AgregarUsuarios';
 import AgregarProducto from './pages/AgregarProducto';
 import ModificarProducto from './pages/ModificarProducto';
+import Producto from './pages/Producto';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Login/>}/>
       <Route path="/Switch" element={<Switch/>}/>
+      <Route path="/Producto/:id" element={<Producto/>}/>
       <Route path="/Cliente" element={<Cliente/>}/>
       <Route path="/Ps5" element={<Ps5/>}/>
       <Route path="/Xbox X" element={<Xboxx/>}/>
@@ -41,7 +43,7 @@ function App() {
       <Route path="/Registro" element={<Registro/>}/>
       <Route path="/AgregarUsuarios" element={<AgregarUsuarios/>}/>
       <Route path="/AgregarProducto" element={<AgregarProducto/>}/>
-      <Route path="/ModificarProducto" element={<ModificarProducto/>}/>
+      <Route path="/ModificarProducto/:id" element={<ModificarProducto/>}/>
       </Routes> 
 
       </BrowserRouter>

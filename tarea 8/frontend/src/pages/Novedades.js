@@ -23,7 +23,7 @@ const Novedades=(props)=>{
                       <p>Cargando...
                       </p>
                   ):(
-                    novedades.map(item=><NovedadesItems key={item.id_p}
+                    novedades.map(item=><NovedadesItems key={item.id_p} id={item.id_p}
                         nombre={item.nombre_p} precio={item.precio} 
                         imagen={item.imagen}/>
 

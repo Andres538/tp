@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-08-2023 a las 04:11:46
+-- Tiempo de generación: 01-09-2023 a las 18:05:03
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -74,7 +74,8 @@ INSERT INTO `cliente` (`id_cl`, `nombre_cl`, `mail`, `contraseña`, `telefono`, 
 (11, 'Diego', 'erwsss@gmail.com', 'loco', '141241414', 'culpina200', 141414414),
 (12, 'fede', 'eretet@gmail.com', 'record', '4343442', 'alberdi 421', 2144515415),
 (14, 'fede', 'fede@gmail.com', '2333', '333333', 'culpina200', 333333333),
-(15, 'carlos', 'Carlos@gmail.com', 'loco', '24242424', 'culpina200', 2147483647);
+(15, 'carlos', 'Carlos@gmail.com', 'loco', '24242424', 'culpina200', 2147483647),
+(16, 'Alex', 'Alex@gmail.com', 'loco', '123214214', 'alberdi 421', 144141414);
 
 -- --------------------------------------------------------
 
@@ -139,7 +140,18 @@ INSERT INTO `orden` (`id_o`, `id_producto`, `id_venta`) VALUES
 (11, 15, 37),
 (12, 19, 30),
 (13, 1, 30),
-(14, 2, 31);
+(14, 2, 31),
+(15, 28, 335885),
+(16, 28, 658711),
+(17, 15, 598226),
+(18, 15, 881308),
+(19, 15, 412153),
+(20, 15, 810913),
+(21, 15, 384056),
+(22, 15, 279727),
+(23, 15, 891552),
+(24, 15, 649887),
+(25, 15, 738430);
 
 -- --------------------------------------------------------
 
@@ -170,7 +182,7 @@ INSERT INTO `producto` (`id_p`, `nombre_p`, `precio`, `id_categoria`, `id_marca`
 (4, 'Resident Evil 4', 25000, 1, 3, 2, '2023-03-31', 24, 'v1692691037/residentevil4_3870863t_k355x2.jpg'),
 (5, 'Street Fighter 6', 34000, 1, 3, 1, '2023-06-08', 0, 'v1692691036/descarga_6_wxojkn.jpg'),
 (6, 'Legend of Zelda tears of a kingd', 34000, 1, 1, 2, '2023-06-18', 14, 'v1692691038/91O9Uk5oWAL._SL1500__wqhvnj.jpg'),
-(15, 'Rachet and Clank', 25000, 1, 2, 1, '2023-08-25', 20, 'jkelpj80nsqg2rklr1ou'),
+(15, 'Rachet and Clank', 25000, 1, 2, 1, '2023-08-25', 11, 'jkelpj80nsqg2rklr1ou'),
 (16, 'Xbox control', 350000, 3, 3, 1, '2023-08-25', 40, 'tgzroclnjeuguu2tzibm'),
 (17, 'Switch', 240000, 2, 1, 1, '2023-08-25', 35, 'igatgi6c4iskjcpfzsig'),
 (18, 'Elder Ring', 40000, 1, 3, 1, '2023-08-25', 10, 'cx0obwrgobxr9bvr70bj'),
@@ -183,7 +195,7 @@ INSERT INTO `producto` (`id_p`, `nombre_p`, `precio`, `id_categoria`, `id_marca`
 (25, 'Wild Hearts', 35000, 1, 2, 1, '2023-08-25', 20, 'itwc1kze1bw37ur6vkbi'),
 (26, 'God of War', 30000, 1, 2, 1, '2023-08-25', 22, 'awhfqzla2lun8qcsnohk'),
 (27, 'Demon Souls', 30000, 1, 1, 1, '2023-08-25', 26, 'rp9exierneooqy80jzsz'),
-(28, 'Ps5 control', 25000, 3, 2, 1, '2023-08-25', 30, 'bctv373brmk3l8hqecnj'),
+(28, 'Ps5 control', 25000, 3, 2, 1, '2023-08-25', 28, 'bctv373brmk3l8hqecnj'),
 (29, 'Mario kart', 22000, 1, 1, 1, '2023-08-25', 12, 'jkch7nbx4dunr4bhuh0x');
 
 -- --------------------------------------------------------
@@ -202,8 +214,8 @@ CREATE TABLE `stock` (
 --
 
 INSERT INTO `stock` (`id_s`, `nombre_s`) VALUES
-(1, 'Sin stock'),
-(2, 'Hay stock');
+(1, 'Hay stock'),
+(2, 'Sin stock');
 
 -- --------------------------------------------------------
 
@@ -225,6 +237,17 @@ INSERT INTO `venta` (`id_v`, `id_cliente`) VALUES
 (33, 1),
 (36, 1),
 (40, 1),
+(279727, 1),
+(335885, 1),
+(384056, 1),
+(412153, 1),
+(598226, 1),
+(649887, 1),
+(658711, 1),
+(738430, 1),
+(810913, 1),
+(881308, 1),
+(891552, 1),
 (32, 3),
 (39, 3),
 (41, 3),
@@ -309,7 +332,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_cl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `correo`
@@ -327,13 +350,13 @@ ALTER TABLE `marca`
 -- AUTO_INCREMENT de la tabla `orden`
 --
 ALTER TABLE `orden`
-  MODIFY `id_o` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_o` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_p` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_p` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `stock`
@@ -345,7 +368,7 @@ ALTER TABLE `stock`
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `id_v` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_v` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=891553;
 
 --
 -- Restricciones para tablas volcadas

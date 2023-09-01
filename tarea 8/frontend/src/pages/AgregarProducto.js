@@ -3,14 +3,14 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 const AgregarProducto=(props)=>{
-    const navigate=useNavigate();
+    let navigate = useNavigate();
     const initialForm={
         nombre_p:'',
         precio:'',
         cantidades:'',
         id_categoria:'',
         id_marca:'',
-        imagen:''
+        imagen:'1'
     }
     const [sending,setSending]=useState(false);
     const [msg,setMsg]=useState('');
@@ -31,7 +31,7 @@ const AgregarProducto=(props)=>{
         setMsg(response.data.message);
         if(response.data.error===false){
             setFormData(initialForm);
-             navigate('./../Productos')
+             navigate('/Admin')
         }else{
            
         }
@@ -53,30 +53,11 @@ const AgregarProducto=(props)=>{
                 <div class="mb-3 row"><input  type="number" class="form-control" value={formData.cantidades} onChange={handleChange} placeholder="Cantidad" name="cantidades"/></div>
                 <div class="mb-3 row">
                     <label for="categoria">Categoria:</label>
-                    <select id="id_categoria" name="id_categoria" value={formData.id_categoria} onChange={handleChange}> 
-  
-                        <option value="1">juego</option>
-                        <option value="2">consola
-                        </option>
-                        <option value="3">accesorios
-                        </option>
-
-                    </select>
+                    <input type="number" class="form-control" value={formData.id_categoria} onChange={handleChange} placeholder="Categoria" name="id_categoria"/>
                 </div>
                 <div class="mb-3 row">
                     <label for="Marca">Marca:</label>
-                    <select id="id_marca" name="id_marca" value={formData.id_marca} onChange={handleChange}>
-                        
-                        <option value="1">Switch
-                        </option>
-                        <option value="2">Play Station
-                        </option>
-                        <option value="1">Xbox
-                        </option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Imagen:</label><input type="file" name="imagen" id="imagen" value={formData.imagen} onChange={handleChange}/>
+                    <input type="number" class="form-control" value={formData.id_marca} onChange={handleChange} placeholder="Marca" name="id_marca"/>
                 </div>
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>

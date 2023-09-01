@@ -12,6 +12,7 @@ body{
 .destacados{
   display: flex;
   justify-content: space-between;
+
 }
 .box{
   box-sizing: border-box;
@@ -55,4 +56,13 @@ body{
 .nosotros{
   margin-left: 20px;
   
+}
+.login{
+  height: 100vh; /* Magic here */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container{
+  border: 1px;
 }

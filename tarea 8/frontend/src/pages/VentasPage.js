@@ -1,13 +1,13 @@
 import { useState,useEffect } from "react";
 import axios from 'axios';
-import Producto from "../components/producto/Producto";
+import Ventas from "../components/producto/Ventas";
 const ProductoPages=(props)=>{
     const [loading,setLoading]=useState(false);
     const [productos,setProductos]=useState([]);
     useEffect(()=>{
         const cargarProducto= async()=>{
             setLoading(true);
-            const response= await axios.get('http://localhost:3000/api/productos');
+            const response= await axios.get('http://localhost:3000/api/ListaVenta');
             setProductos(response.data);
             setLoading(false);
 
@@ -17,15 +17,14 @@ const ProductoPages=(props)=>{
     
     return(
         <section className="holder">
-            <h2>Productos</h2>
+            <h2>Ventas</h2>
             {
                 loading ?(
                     <p>Cargando...
                     </p>
                 ):(
-                   productos.map(item=><Producto key={item.id_p} id={item.id_p} id_s={item.id_stock}
-                    nombre={item.nombre_p} stock={item.nombre_s} precio={item.precio} ingreso={item.ingreso} categoria={item.nombre_c} marca={item.nombre_m} cantidades={item.cantidades}
-                    imagen={item.imagen} />
+                   productos.map(item=><Ventas key={item.id_v} id={item.id_v}
+                    nombre={item.nombre_cl} nombre_p={item.nombre_p}/>
 
                 )
                 )

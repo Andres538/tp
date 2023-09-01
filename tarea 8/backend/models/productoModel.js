@@ -39,9 +39,9 @@ async function getDestacados(){
 }
 async function getProductobyid(id){
     try{
-        var query="SELECT id_p,nombre_p,precio,nombre_c,nombre_m,cantidades,imagen,ingreso FROM producto,categoria,marca WHERE id_categoria=id_c AND id_marca=id_m AND id_p=?"
+        var query="SELECT id_p,nombre_p,precio,nombre_c,nombre_m,cantidades,imagen,ingreso,id_stock,stock.nombre_s FROM producto,categoria,marca,stock WHERE id_categoria=id_c AND id_s=id_stock AND id_marca=id_m AND ?";
         var rows= await pool.query(query,[id]);
-        return rows[0];
+        return rows;
     }catch(error){
         throw error;
     }

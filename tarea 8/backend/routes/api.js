@@ -4,8 +4,26 @@ var productoModel=require('./../models/productoModel');
 var cloudinary=require('cloudinary').v2;
 var correoModel=require('./../models/correoModel');
 var usuariosModel=require('./../models/usuariosModel');
+var ventaModel=require('./../models/ventaModel');
+var orderModel=require('./../models/orderModel');
 var nodemailer=require('nodemailer');
 
+router.post('/Venta',async function(req,res,next){
+    var imag="";
+    req.body.cantidades=req.body.cantidades-1;
+    id_v=Math.floor(100000 + Math.random() * 900000);
+    var id_c=1;
+    await productoModel.UpdateProducto(req.body,imag,req.body.id_p,);
+    await ventaModel.insertVenta(id_v,id_c);
+    await orderModel.insertOrden(req.body.id_p,id_v);
+    res.json();
+});
+router.get('/ListaVenta',async function(req,res,next){
+   
+    var lista=await ventaModel.listaVenta();
+    
+    res.json(lista);
+});
 router.post('/delete',async function(req,res,next){
     await productoModel.deleteProducto(req.body.id_p);
     
@@ -33,7 +51,7 @@ router.get('/productos',async function(req,res,next){
     productos=productos.map(producto=>{
         if(producto.imagen){
             if(producto.imagen){
-                const imagen=cloudinary.image(producto.imagen,{
+                const imagen=cloudinary.url(producto.imagen,{
                     witdh:100,
                     height:100,
                     crop:'fill'
@@ -52,14 +70,43 @@ router.get('/productos',async function(req,res,next){
     })
     res.json(productos);
 });
+router.post('/productobyid',async function(req,res,next){
+    var id=req.body;
+    let productos=await productoModel.getProductobyid(id);
+    console.log(productos);
+    productos=productos.map(producto=>{
+        console.log(producto);
+        if(producto.imagen){
+            if(producto.imagen){
+                const imagen=cloudinary.url(producto.imagen,{
+                    witdh:1500,
+                    height:200,
+                    crop:'fill'
+                    
+                });
 
+                console.log(imagen)
+                return{
+                    ...producto,
+                    imagen
+                }
+            }else{
+                return{
+                    ...producto,
+                    imagen:''
+                }
+            }
+        }
+    });
+    res.json(productos);
+});
 router.get('/ps5',async function(req,res,next){
     let productos=await productoModel.getIdM('2');
     productos=productos.map(producto=>{
         console.log(producto.imagen);
         if(producto.imagen){
             if(producto.imagen){
-                const imagen=cloudinary.image(producto.imagen,{
+                const imagen=cloudinary.url(producto.imagen,{
                     witdh:100,
                     height:100,
                     crop:'fill'
@@ -88,7 +135,7 @@ router.get('/destacados',async function(req,res,next){
         console.log(producto.imagen);
         if(producto.imagen){
             if(producto.imagen){
-                const imagen=cloudinary.image(producto.imagen,{
+                const imagen=cloudinary.url(producto.imagen,{
                     witdh:100,
                     height:100,
                     crop:'fill'
@@ -116,7 +163,7 @@ router.get('/novedades',async function(req,res,next){
         console.log(producto.imagen);
         if(producto.imagen){
             if(producto.imagen){
-                const imagen=cloudinary.image(producto.imagen,{
+                const imagen=cloudinary.url(producto.imagen,{
                     witdh:100,
                     height:100,
                     crop:'fill'
@@ -179,12 +226,7 @@ router.post('/registro',async (req,res)=>{
     }
 )
 router.post('/registrarProducto',async (req,res)=>{
-    var img_id='';
-        console.log(req.files);
-        if(req.files && Object.keys(req.files).length>0){
-            imagen=req.files.imagen;
-            img_id=(await uploader(imagen.tempFilePath)).public_id;
-        }
+    var img_id='1';
     console.log(req.body);
     if(req.body.nombre_p!="" && req.body.precio!="" && req.body.cantidades!=""){
         await productoModel.insertProducto(req.body,img_id);

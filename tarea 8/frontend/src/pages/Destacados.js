@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import axios from 'axios';
+
 import DestacadosItems from "../components/producto/DestacadosItems";
 const Destacados=(props)=>{
     const [loading,setLoading]=useState(false);
@@ -23,7 +24,7 @@ const Destacados=(props)=>{
                       <p>Cargando...
                       </p>
                   ):(
-                    destacados.map(item=><DestacadosItems key={item.id_p}
+                    destacados.map(item=><DestacadosItems key={item.id_p} id={item.id_p}
                         nombre={item.nombre_p} precio={item.precio} 
                         imagen={item.imagen}/>)
                   )

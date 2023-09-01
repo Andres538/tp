@@ -25,7 +25,7 @@ const Ps5page=(props)=>{
                       <p>Cargando...
                       </p>
                   ):(
-                    ps5.map(item=><Ps5item key={item.id_p}
+                    ps5.map(item=><Ps5item key={item.id_p} id={item.id_p}
                         nombre={item.nombre_p} precio={item.precio} 
                         imagen={item.imagen} />
 

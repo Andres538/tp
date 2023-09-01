@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import React,{ useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
-
+import '../App.css'
 const Login=(props)=>{ 
   const navigate=useNavigate();
   const initialForm={
@@ -37,10 +37,10 @@ const handleSubmit=async e=>{
  
   return(
      
-    <main class="holder">
-         <form onSubmit={handleSubmit}>
-          <input type="text" id="inputUser" placeholder="Mail" value={formData.mail} onChange={handleChange} name="mail"/>
-          <input type="password" id="inputPassword" placeholder="password" value={formData.password} onChange={handleChange} name="password"></input>
+    <main class="holder login">
+         <form class="container" onSubmit={handleSubmit}>
+          <input type="text" id="inputUser" placeholder="Mail" value={formData.mail} onChange={handleChange} name="mail"/><br></br>
+          <input type="password" id="inputPassword" placeholder="password" value={formData.password} onChange={handleChange} name="password"></input><br></br>
           <button type="submit">Ingresar</button>
          </form>
          <ul>
